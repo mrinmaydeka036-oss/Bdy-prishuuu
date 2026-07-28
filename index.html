@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Countdown ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ff4d6d,#ff758f,#ffb3c6);
+    color:white;
+    overflow:hidden;
+}
+
+h1{
+    font-size:38px;
+    margin-bottom:30px;
+    text-align:center;
+    text-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+#countdown{
+    display:flex;
+    gap:15px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.box{
+    width:90px;
+    height:90px;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.num{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.label{
+    font-size:13px;
+    opacity:.9;
+}
+
+button{
+    padding:15px 45px;
+    border:none;
+    border-radius:40px;
+    font-size:20px;
+    font-weight:bold;
+    background:white;
+    color:#ff4d6d;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:disabled{
+    background:#d9d9d9;
+    color:#777;
+    cursor:not-allowed;
+}
+
+button:not(:disabled):hover{
+    transform:scale(1.05);
+}
+</style>
+
+</head>
+<body>
+
+<h1>🎂 Birthday Countdown ❤️</h1>
+
+<div id="countdown"></div>
+
+<button id="continueBtn" disabled>Continue ❤️</button>
+
+<script>
+
+const target = new Date("2026-07-31T00:00:00").getTime();
+
+const countdown = document.getElementById("countdown");
+const btn = document.getElementById("continueBtn");
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+    const distance = target - now;
+
+    if(distance <= 0){
+
+        countdown.innerHTML = "<h2>🎉 Happy Birthday My Love ❤️</h2>";
+
+        btn.disabled = false;
+
+        return;
+    }
+
+    const days = Math.floor(distance / (1000*60*60*24));
+    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    countdown.innerHTML = `
+    <div class="box">
+        <div class="num">${days}</div>
+        <div class="label">Days</div>
+    </div>
+
+    <div class="box">
+        <div class="num">${hours}</div>
+        <div class="label">Hours</div>
+    </div>
+
+    <div class="box">
+        <div class="num">${minutes}</div>
+        <div class="label">Minutes</div>
+    </div>
+
+    <div class="box">
+        <div class="num">${seconds}</div>
+        <div class="label">Seconds</div>
+    </div>
+    `;
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+btn.addEventListener("click",function(){
+
+    if(new Date().getTime() < target){
+        alert("❤️ You can open this only on 31st July 2026.");
+        return;
+    }
+
+    window.location.href="https://birthday.myheartcraft.com/t/ygO3J4aB";
+
+});
+
+</script>
+
+</body>
+  </html>
